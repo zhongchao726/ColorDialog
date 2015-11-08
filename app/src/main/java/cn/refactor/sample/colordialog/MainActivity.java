@@ -1,7 +1,7 @@
 package cn.refactor.sample.colordialog;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showTextDialog(View view) {
         ColorDialog dialog = new ColorDialog(this);
+        dialog.setColor("#8ECB54");
         dialog.setTitle(getString(R.string.operation));
         dialog.setContentText(getString(R.string.content_text));
         dialog.setPositiveListener(getString(R.string.text_iknow), new ColorDialog.OnPositiveListener() {

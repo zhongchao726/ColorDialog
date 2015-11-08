@@ -45,4 +45,4 @@
 
 
 #License
-<p>SymbolView is available under the MIT license.</p>
+<p>ColorDialog is available under the MIT license.</p>

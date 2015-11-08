@@ -4,14 +4,16 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -22,23 +24,23 @@ import android.widget.TextView;
  */
 public class ColorDialog extends Dialog implements View.OnClickListener {
 
-    private View mBtnGroupView, mDividerView;
+    private ImageView mContentIv;
+
+    private Bitmap mContentBitmap;
+
+    private View mBtnGroupView, mDividerView, mBkgView;
 
     private TextView mTitleTv, mContentTv, mPositiveBtn, mNegativeBtn;
 
-    private ImageView mContentIv;
+    private Drawable mDrawable;
+
+    private int mResId, mBackgroundColor, mTitleTextColor, mContentTextColor;
 
     private OnPositiveListener mPositiveListener;
 
     private OnNegativeListener mNegativeListener;
 
     private CharSequence mTitleText, mContentText, mPositiveText, mNegativeText;
-
-    private Bitmap mContentBitmap;
-
-    private Drawable mDrawable;
-
-    private int mResId, mBackgroundColor;
 
     public ColorDialog(Context context) {
         this(context, 0);
@@ -68,6 +70,7 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
         View contentView = View.inflate(getContext(), R.layout.layout_colordialog, null);
         setContentView(contentView);
 
+        mBkgView = contentView.findViewById(R.id.llBkg);
         mTitleTv = (TextView) contentView.findViewById(R.id.tvTitle);
         mContentTv = (TextView) contentView.findViewById(R.id.tvContent);
         mContentIv = (ImageView) contentView.findViewById(R.id.ivContent);
@@ -110,7 +113,38 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
             mContentIv.setBackgroundResource(mResId);
         }
 
+        setTextColor();
+
+        setBackgroundColor();
+
         setContentMode();
+    }
+
+    private void setBackgroundColor() {
+
+        if (0 == mBackgroundColor) {
+            return;
+        }
+
+        int radius = DisplayUtil.dp2px(getContext(), 6);
+        float[] outerRadii = new float[] { radius, radius, radius, radius, 0, 0, 0, 0 };
+        RoundRectShape roundRectShape = new RoundRectShape(outerRadii, null, null);
+        ShapeDrawable shapeDrawable = new ShapeDrawable(roundRectShape);
+        shapeDrawable.getPaint().setColor(mBackgroundColor);
+        shapeDrawable.getPaint().setStyle(Paint.Style.FILL);
+        mBkgView.setBackgroundDrawable(shapeDrawable);
+    }
+
+    private void setTextColor() {
+
+        if (0 != mTitleTextColor) {
+            mTitleTv.setTextColor(mTitleTextColor);
+        }
+
+        if (0 != mContentTextColor) {
+            mContentTv.setTextColor(mContentTextColor);
+        }
+
     }
 
     private void setContentMode() {
@@ -170,6 +204,35 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
         }
         return this;
     }
+
+    public ColorDialog setTitleTextColor(int color) {
+        mTitleTextColor = color;
+        return this;
+    }
+
+    public ColorDialog setTitleTextColor(String color) {
+        try {
+            setTitleTextColor(Color.parseColor(color));
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    public ColorDialog setContentTextColor(int color) {
+        mContentTextColor = color;
+        return this;
+    }
+
+    public ColorDialog setContentTextColor(String color) {
+        try {
+            setContentTextColor(Color.parseColor(color));
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
 
     public ColorDialog setPositiveListener(CharSequence text, OnPositiveListener l) {
         mPositiveText = text;
