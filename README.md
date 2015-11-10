@@ -4,6 +4,7 @@
 * Text Mode
 * Image Mode
 * Text & Image Mode
+* Thanks to [@Diego Faria](https://dribbble.com/shots/1626595-Feedback-dialogs-collection-FREE-PSD "Title") from Dribbble. 
 
 
 ### 调用方式:
@@ -26,6 +27,15 @@
             }
         }).show();
 </code></pre>
+
+<pre><code>new PromptDialog(this).setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+            .setTitleText("Success").setContentText("Your info text goes here. Loremipsum dolor sit amet, consecteturn adipisicing elit, sed do eiusmod.")
+            .setPositiveListener("OK", new PromptDialog.OnPositiveListener() {
+                @Override
+                public void onClick(PromptDialog dialog) {
+                    dialog.dismiss();
+                }
+            }).show();</code></pre>
 
 
 

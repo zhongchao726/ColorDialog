@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import cn.refactor.lib.colordialog.ColorDialog;
+import cn.refactor.lib.colordialog.PromptDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +14,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void showPromptDialog(View view) {
+        showPromptDlg();
+    }
+
+    private void showPromptDlg() {
+        new PromptDialog(this).setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+            .setTitleText("Success").setContentText("Your info text goes here. Loremipsum dolor sit amet, consecteturn adipisicing elit, sed do eiusmod.")
+            .setPositiveListener("OK", new PromptDialog.OnPositiveListener() {
+                @Override
+                public void onClick(PromptDialog dialog) {
+                    dialog.dismiss();
+                }
+            }).show();
     }
 
     public void showTextDialog(View view) {
