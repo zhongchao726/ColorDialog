@@ -16,6 +16,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import cn.refactor.lib.colordialog.util.DisplayUtil;
+
 /**
  * 作者 : andy
  * 日期 : 15/11/7 17:26
