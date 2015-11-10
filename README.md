@@ -41,15 +41,37 @@
 
 
 ### 效果图:
-* Text Mode
+
+* PromptDialog Success
+
+![](https://github.com/andyxialm/ColorDialog/blob/master/art/Screenshot_type_success.png?raw=true)
+
+* PromptDialog Info
+
+![](https://github.com/andyxialm/ColorDialog/blob/master/art/Screenshot_type_info.png?raw=true)
+
+* PromptDialog Help
+
+![](https://github.com/andyxialm/ColorDialog/blob/master/art/Screenshot_type_help.png?raw=true)
+
+* PromptDialog Error
+
+![](https://github.com/andyxialm/ColorDialog/blob/master/art/Screenshot_type_error.png?raw=true)
+
+* PromptDialog Warning
+
+![](https://github.com/andyxialm/ColorDialog/blob/master/art/Screenshot_type_warning.png?raw=true)
+
+
+* ColorDialog Text Mode
 
 ![](https://github.com/andyxialm/ColorDialog/blob/master/art/Screenshot_text.png?raw=true)
 
-* Image Mode
+* ColorDialog Image Mode
 
 ![](https://github.com/andyxialm/ColorDialog/blob/master/art/Screenshot_img.png?raw=true)
 
-* Text Mode
+* ColorDialog Text&Image Mode
 
 ![](https://github.com/andyxialm/ColorDialog/blob/master/art/Screenshot_imgtext.png?raw=true)
 
